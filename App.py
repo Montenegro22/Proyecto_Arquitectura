@@ -6,9 +6,9 @@ import cgi
 print ('Content-Type: text/html')
 print ('')
 
-datos= cgi.FieldStorage()
-Nombre=datos.getvalue('Nombre')
-contrase=datos.getvalue('password')
+#datos= cgi.FieldStorage()
+#Nombre=datos.getvalue('Nombre')
+#contrase=datos.getvalue('password')
 
 
 print ("")
@@ -19,16 +19,16 @@ print ("")
 
 try:
    conn = mysql.connector.connect(user='Pelicula', password='Nat.2008', database='Peliculas', host='127.0.0.1')
-   cursor = conn.cursor()
-   sql = "insert into datos(Nombre,password) values (%s,sha(%s));"
+ #  cursor = conn.cursor()
+  # sql = "insert into datos(Nombre,password) values (%s,sha(%s));"
    #sql = "SELECT * FROM datos WHERE Nombre='Nombre' and contrase='password'";
-   val = (Nombre, contrase)
-   cursor.execute(sql,val)
+   #val = (Nombre, contrase)
+  # cursor.execute(sql,val)
 
-   conn.commit()
+   #conn.commit()
 
-   print ('<p>El usuario ya  ha sido registrado Bienvenido  {} </p>'.format(Nombre))
-   cursor.close()
+  # print ('<p>El usuario ya  ha sido registrado Bienvenido  {} </p>'.format(Nombre))
+   #cursor.close()
    conn.close()
 
 
