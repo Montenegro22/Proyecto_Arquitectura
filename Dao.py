@@ -21,8 +21,8 @@ class Dao:
         except mysql.connector.Error as err:
             if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
                 print ("Por favor verifique  ")
-            elif err.errno == errorcode.ER_BAD_BD_ERROR:
-                print ("La base de datos a la que desea acceder no existe, por favor verificar conexion")
+          #  elif err.errno == errorcode.ER_BAD_BD_ERROR:
+           #     print ("La base de datos a la que desea acceder no existe, por favor verificar conexion")
             else:
                 print (err)             
             return False     
@@ -45,8 +45,8 @@ class Dao:
         except mysql.connector.Error as err:
             if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
                 print ("Por favor verifique  ")
-            elif err.errno == errorcode.ER_BAD_BD_ERROR:
-                print ("La base de datos a la que desea acceder no existe, por favor verificar conexion")
+        #    elif err.errno == errorcode.ER_BAD_BD_ERROR:
+         #       print ("La base de datos a la que desea acceder no existe, por favor verificar conexion")
             else:
                 print (err)             
             return None     
@@ -67,8 +67,8 @@ class Dao:
         except mysql.connector.Error as err:
             if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
                 print ("Por favor verifique  ")
-            elif err.errno == errorcode.ER_BAD_BD_ERROR:
-                print ("La base de datos a la que desea acceder no existe, por favor verificar conexion")
+            #elif err.errno == errorcode.ER_BAD_BD_ERROR:
+             #   print ("La base de datos a la que desea acceder no existe, por favor verificar conexion")
             else:
                 print (err)             
             return False    
@@ -87,8 +87,8 @@ class Dao:
         except mysql.connector.Error as err:
             if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
                 print ("Por favor verifique  ")
-            elif err.errno == errorcode.ER_BAD_BD_ERROR:
-                print ("La base de datos a la que desea acceder no existe, por favor verificar conexion")
+            #elif err.errno == errorcode.ER_BAD_BD_ERROR:
+             #   print ("La base de datos a la que desea acceder no existe, por favor verificar conexion")
             else:
                 print (err)             
             return False 
@@ -112,8 +112,8 @@ class Dao:
         except mysql.connector.Error as err:
             if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
                 print ("Por favor verifique  ")
-            elif err.errno == errorcode.ER_BAD_BD_ERROR:
-                print ("La base de datos a la que desea acceder no existe, por favor verificar conexion")
+            #elif err.errno == errorcode.ER_BAD_BD_ERROR:
+             #   print ("La base de datos a la que desea acceder no existe, por favor verificar conexion")
             else:
                 print (err)             
             return None 
