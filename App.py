@@ -28,14 +28,14 @@ if os.environ['REQUEST_METHOD']=="POST":
    Descripcion = datos.getvalue('Descripcion')
 
    if dao.consultar_pelicula(id) is not None:
-      print(json.dumps("{'mensaje':'Esa película ya existe'}"))
+      print(json.dumps('{"mensaje":"Esa película ya existe"}'))
    else:
       pelicula = Pelicula(id,Nombre,Genero,Año,Productora,Pais,Duracion,Idiomas,Descripcion)
       
       if dao.add_pelicula(pelicula):
-         print("{'mensaje':'Pelicula creada'}")
+         print('{"mensaje":"Pelicula creada"}')
       else:
-         print("{'mensaje':'Error al crear pelicula'}")   
+         print('{"mensaje":"Error al crear pelicula"}')   
 
 
 elif os.environ['REQUEST_METHOD']=="PUT":
