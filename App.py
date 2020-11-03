@@ -33,7 +33,7 @@ if os.environ['REQUEST_METHOD']=="POST":
       pelicula = Pelicula(id,Nombre,Genero,Año,Productora,Pais,Duracion,Idiomas,Descripcion)
       
       if dao.add_pelicula(pelicula):
-         print("{'mensaje':'Esa pelicula ya existe'}")
+         print("{'mensaje':'Pelicula creada'}")
       else:
          print("{'mensaje':'Error al crear pelicula'}")   
 
