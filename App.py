@@ -52,7 +52,7 @@ elif os.environ['REQUEST_METHOD']=="PUT":
    Descripcion = datos.getvalue('Descripcion')
 
    if dao.consultar_pelicula(id) is None:
-      print("{'mensaje':'Esa película no existe'}")
+      print("{'mensaje':'Esa película YA existe'}")
    else:
       pelicula = Pelicula(id,Nombre,Genero,Año,Productora,Pais,Duracion,Idiomas,Descripcion)
       
