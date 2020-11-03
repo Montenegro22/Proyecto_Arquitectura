@@ -52,14 +52,14 @@ elif os.environ['REQUEST_METHOD']=="PUT":
    Descripcion = datos.getvalue('Descripcion')
 
    if dao.consultar_pelicula(id) is None:
-      print(json.dumps("{'mensaje':'Esa película YA existe'}"))
+      print(json.dumps('{"mensaje":"Esa película YA existe"}'))
    else:
       pelicula = Pelicula(id,Nombre,Genero,Año,Productora,Pais,Duracion,Idiomas,Descripcion)
       
       if dao.actualizar_pelicula(pelicula):
-         print("{'mensaje':'La pelicula ha sido actualizada'}")
+         print('{"mensaje":"La pelicula ha sido actualizada"}')
       else:
-         print("{'mensaje':'Error al actualizar pelicula'}")   
+         print('{"mensaje":"Error al actualizar pelicula"}')   
 
 
 elif os.environ['REQUEST_METHOD']=="DELETE":
@@ -71,7 +71,7 @@ elif os.environ['REQUEST_METHOD']=="DELETE":
    if dao.consultar_pelicula(id) is None:
       print(json.dumps("{'mensaje':'Esa película no existe'}"))
    else:
-      pelicula = Pelicula(id)
+      pelicula = Pelicula(id,Nombre,Genero,Año,Productora,Pais,Duracion,Idiomas,Descripcion)
       
       if dao.eliminar_pelicula(pelicula):
          print("{'mensaje':'La pelicula se ha eliminado'}")
