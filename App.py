@@ -66,19 +66,12 @@ elif os.environ['REQUEST_METHOD']=="DELETE":
 #ELIMINAR
 
    id=datos.getvalue('id')
-   Nombre=datos.getvalue('Nombre')
-   Genero=datos.getvalue('Genero')
-   Año=datos.getvalue('Anio')
-   Productora = datos.getvalue('Productora')
-   Pais = datos.getvalue('Pais')
-   Duracion = datos.getvalue('Duracion')
-   Idiomas = datos.getvalue('Idiomas')
-   Descripcion = datos.getvalue('Descripcion')
+
 
    if dao.consultar_pelicula(id) is None:
       print(json.dumps("{'mensaje':'Esa película no existe'}"))
    else:
-      pelicula = Pelicula(id,Nombre,Genero,Año,Productora,Pais,Duracion,Idiomas,Descripcion)
+      pelicula = Pelicula(id)
       
       if dao.eliminar_pelicula(pelicula):
          print("{'mensaje':'La pelicula se ha eliminado'}")
