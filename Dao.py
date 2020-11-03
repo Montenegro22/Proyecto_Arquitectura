@@ -10,7 +10,7 @@ class Dao:
         try:
             conn = mysql.connector.connect(user='Pelicula', password='Nat.2008', database='Pelicula', host='127.0.0.1')
             cursor = conn.cursor()
-            sql = ("INSERT INTO Peliculas (id, Nombre, Genero, Año, Productora, Pais, Duracion, Idiomas, Descripcion) VALUES (int,%s,%s,%s,%s,%s,%s,%s,%s)")
+            sql = ("INSERT INTO Peliculas (id, Nombre, Genero, Año, Productora, Pais, Duracion, Idiomas, Descripcion) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)")
             val = (pelicula.id, pelicula.Nombre, pelicula.Genero, pelicula.Año, pelicula.Productora, pelicula.Pais, pelicula.Duracion, pelicula.Idiomas, pelicula.Descripcion)
             cursor.execute(sql,val)
             conn.commit()
