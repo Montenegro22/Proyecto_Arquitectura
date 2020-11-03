@@ -6,11 +6,8 @@ import cgi
 import os
 from Dao import Dao
 from modelos import Pelicula
-from flask import Flask, render_template, request, redirect, url_for, flash
-from flask import Flask
-from flask_mysqldb import MySQL
 import json
-app = Flask(__name__)
+
 
 print ('Content-Type: text/json')
 print ('')
