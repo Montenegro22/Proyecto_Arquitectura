@@ -4,25 +4,20 @@ import mysql.connector
 from mysql.connector import errorcode
 import cgi
 import os
-from Dao import add_pelicula
-from Dao import actualizar_pelicula
-from Dao import eliminar_pelicula
-from Dao import listar_pelicula
+from Dao import Dao
 from modelos import Pelicula
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask import Flask
 from flask_mysqldb import MySQL
-
-
+import json
 app = Flask(__name__)
-
 
 print ('Content-Type: text/json')
 print ('')
 
 
 datos= cgi.FieldStorage()
-
+dao = Dao()
 if os.environ['REQUEST_METHOD']=="POST":
 
    id=datos.getvalue('id')
@@ -35,12 +30,12 @@ if os.environ['REQUEST_METHOD']=="POST":
    Idiomas = datos.getvalue('Idiomas')
    Descripcion = datos.getvalue('Descripcion')
 
-   if Pelicula.consultar_pelicula(id) is not None:
+   if dao.consultar_pelicula(id) is not None:
       print("{'mensaje':'Esa película ya existe'}")
    else:
       pelicula = Pelicula(id,Nombre,Genero,Año,Productora,Pais,Duracion,Idiomas,Descripcion)
       
-      if add_pelicula(pelicula):
+      if dao.add_pelicula(pelicula):
          print("{'mensaje':'Esa película ya existe'}")
       else:
          print("{'mensaje':'Error al crear pelicula'}")   
@@ -59,15 +54,15 @@ elif os.environ['REQUEST_METHOD']=="PUT":
    Idiomas = datos.getvalue('Idiomas')
    Descripcion = datos.getvalue('Descripcion')
 
-   if Pelicula.actualizar_pelicula(id) is not None:
-      print("{'mensaje':'Esa película ya existe'}")
+   if dao.consultar_pelicula(id) is None:
+      print("{'mensaje':'Esa película no existe'}")
    else:
       pelicula = Pelicula(id,Nombre,Genero,Año,Productora,Pais,Duracion,Idiomas,Descripcion)
       
-      if actualizar_pelicula(pelicula):
-         print("{'mensaje':'Esa película ya existe'}")
+      if dao.actualizar_pelicula(pelicula):
+         print("{'mensaje':'La pelicula ha sido actualizada'}")
       else:
-         print("{'mensaje':'Error al crear pelicula'}")   
+         print("{'mensaje':'Error al actualizar pelicula'}")   
 
 
 elif os.environ['REQUEST_METHOD']=="DELETE":
@@ -83,57 +78,28 @@ elif os.environ['REQUEST_METHOD']=="DELETE":
    Idiomas = datos.getvalue('Idiomas')
    Descripcion = datos.getvalue('Descripcion')
 
-   if Pelicula.eliminar_pelicula(id) is not None:
-      print("{'mensaje':'Esa película ya existe'}")
+   if dao.consultar_pelicula(id) is None:
+      print("{'mensaje':'Esa película no existe'}")
    else:
       pelicula = Pelicula(id,Nombre,Genero,Año,Productora,Pais,Duracion,Idiomas,Descripcion)
       
-      if eliminar_pelicula(pelicula):
-         print("{'mensaje':'Esa película ya existe'}")
+      if dao.eliminar_pelicula(pelicula):
+         print("{'mensaje':'La pelicula se ha eliminado'}")
       else:
-         print("{'mensaje':'Error al crear pelicula'}")   
+         print("{'mensaje':'Error al eliminar pelicula'}")   
 
 
 elif os.environ['REQUEST_METHOD']=="GET":
 #LISTAR
-
-   id=datos.getvalue('id')
-   Nombre=datos.getvalue('Nombre')
-   Genero=datos.getvalue('Genero')
-   Año=datos.getvalue('Anio')
-   Productora = datos.getvalue('Productora')
-   Pais = datos.getvalue('Pais')
-   Duracion = datos.getvalue('Duracion')
-   Idiomas = datos.getvalue('Idiomas')
-   Descripcion = datos.getvalue('Descripcion')
-
-   if Pelicula.listar_pelicula(id) is not None:
-      print("{'mensaje':'Esa película ya existe'}")
-   else:
-      pelicula = Pelicula(id,Nombre,Genero,Año,Productora,Pais,Duracion,Idiomas,Descripcion)
-      
-      if listar_pelicula(pelicula):
-         print("{'mensaje':'Esa película ya existe'}")
-      else:
-         print("{'mensaje':'Error al crear pelicula'}")   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-
-
-
-
+   
+   dao=Dao()
+   peliculas = dao.listar_pelicula()
+   print("[")
+   longitud=len(peliculas)
+   i=1
+   for pelicula in peliculas:
+      print(json.dumps(pelicula.dict))
+      if i<longitud:
+         print(",")
+         i=i+1
+   print("]") 
