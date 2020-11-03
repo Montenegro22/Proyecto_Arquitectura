@@ -58,7 +58,7 @@ class Dao:
             conn = mysql.connector.connect(user='Pelicula', password='Nat.2008', database='Pelicula', host='127.0.0.1')
             cursor = conn.cursor()
             sql = ("update Peliculas set Nombre=%s, Genero=%s, Año=%s, Productora=%s, Pais=%s, Duracion=%s, Idiomas=%s, Descripcion=%s where id=%s;" )    
-            val = (pelicula.Nombre, pelicula.Genero, pelicula.Año, pelicula.Productora, pelicula.Pais, pelicula.Duracion, pelicula.Idiomas, pelicula.Descripcion, pelicula.id)
+            val = (pelicula.id,pelicula.Nombre, pelicula.Genero, pelicula.Año, pelicula.Productora, pelicula.Pais, pelicula.Duracion, pelicula.Idiomas, pelicula.Descripcion)
             cursor.execute(sql,val)
             cursor.close()
             conn.close()
