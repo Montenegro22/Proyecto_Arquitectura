@@ -13,7 +13,7 @@ nombre=datos.getvalue('nombre')
 contraseña =datos.getvalue('contra')
 
 try:
-  cnx = mysql.connector.connect(user='Pelicula', password = 'Nat.2008', database='Peliculas', host='127.0.0.1')
+  cnx = mysql.connector.connect(user='Pelicula', password = 'Nat.2008', database='Pelicula', host='127.0.0.1')
   cursor = cnx.cursor()
   sql = "insert into Correo (Usuario,Contraseña) values (%s,sha(%s));"
   cursor.execute(sql,(nombre,contraseña))
