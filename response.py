@@ -2,6 +2,8 @@
 import mysql.connector
 from mysql.connector import errorcode
 import cgi
+import os
+
 
 print('Content-Type: text/html')
 print('')
@@ -15,8 +17,8 @@ try:
   cursor = cnx.cursor()
   sql = "insert into Correo (Usuario,Contraseña) values (%s,sha(%s));"
   cursor.execute(sql,(nombre,contraseña))
-  cursor.close()
   cnx.commit()
+  cursor.close()
   print('<p>Usuario creado {}</p>'.format(nombre))
 except mysql.connector.Error as err:
   if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:

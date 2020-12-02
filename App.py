@@ -13,6 +13,7 @@ print ('Content-Type: text/json')
 print ('')
 
 
+
 datos= cgi.FieldStorage()
 dao = Dao()
 if os.environ['REQUEST_METHOD']=="POST":
