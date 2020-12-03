@@ -19,9 +19,7 @@ try:
   cursor.execute(sql,(nombre,contraseña))
   cnx.commit()
   cursor.close()
-  
-  print('<p>Usuario creado {}</p>'.format(nombre))
-
+  #print('<p>Usuario creado {}</p>'.format(nombre))
 except mysql.connector.Error as err:
   if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
     print("Algo está mal con tu usuario o contraseña")
